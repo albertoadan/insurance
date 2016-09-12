@@ -1,0 +1,290 @@
+﻿<?xml version="1.0"?>
+<openerp>
+<data>
+    <!-- Definició del menú "Insurance" i submenú "Configuració" -->
+    <menuitem name="Insurance" web_icon="images/insurance.png" web_icon_hover="images/insurance-hover.png" id="menu_insurance"/>
+    <menuitem name="Configuration" id="menu_insurance_configuration" parent="menu_insurance" sequence="99"/>
+
+    <!-- Vista "tree" i acció per l'objecte insurance.cancellation.reason -->
+    <record model="ir.ui.view" id="view_insurance_cancellation_reason_tree">
+        <field name="name">insurance.cancellation.reason.tree</field>
+        <field name="model">insurance.cancellation.reason</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Cancellation reasons" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_insurance_cancellation_reason">
+        <field name="name">Cancellation reasons</field>
+        <field name="res_model">insurance.cancellation.reason</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem name="Cancellation reasons" id="menu_insurance_cancellation_reason" action="action_insurance_cancellation_reason" parent="menu_insurance_configuration"/>
+
+    <!-- Vista "form" per l'objecte insurance.cancellation.reason pensada per quan s'invoca des d'altres formularis -->
+    <!-- En aquest cas, és redundant, per què la que crea OpenERP és idèntica a aquesta, ja que només hi ha un camp
+         i no hi ha massa possibilitats de disseny, però l'enunciat la demanava -->
+    <record model="ir.ui.view" id="view_insurance_cancellation_reason_form">
+        <field name="name">insurance.cancellation.reason.form</field>
+        <field name="model">insurance.cancellation.reason</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Cancellation reasons">
+                <field name="name"/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vistes "tree" i "search" pels objectes insurance.policy -->
+    <record model="ir.ui.view" id="view_insurance_policy_tree">
+        <field name="name">insurance.policy.tree</field>
+        <field name="model">insurance.policy</field>
+        <field name="type">tree</field>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <tree string="Policies" colors="green:active==True;red:active==False" >
+                <field name="product_id"/>
+                <field name="customer_id"/>
+                <field name="supplier_id"/>
+                <field name="active" invisible="1"/>
+                <field name="effective_date"/>
+                <field name="expiration_date"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_insurance_policy_search">
+        <field name="name">insurance.policy.search</field>
+        <field name="model">insurance.policy</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+        <search>
+          <group>
+            <filter string="Active" name="f_active"  icon="terp-check"
+                    domain="[('active','=',True)]"/>
+            <filter string="Inactive" name="f_inactive"  icon="terp-dialog-close"
+                    domain="[('active','=',False)]"/>
+            <separator orientation="vertical"/>
+            <field name="customer_id" widget="selection"/>
+            <field name="product_id" widget="selection"/>
+            <field name="supplier_id" widget="selection"/>
+          </group>
+          <newline/>
+          <group expand="0" string="Group By...">
+            <filter string="Insurance broker" icon="terp-personal" domain="[]" context="{'group_by' : 'supplier_id'}" />
+            <separator orientation="vertical"/>
+            <filter string="Insurance" icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'product_id'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+    
+    <!-- Vista "form" i acció pels objectes insurance.policy/insurance.policy.renewal/insurance.policy.claim -->
+    <record model="ir.ui.view" id="view_insurance_policy_form" >
+        <field name="name">insurance.policy.form</field>
+        <field name="model">insurance.policy</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Policy"  >
+                <field name="id" string="Policy Id."/>
+                <newline/>
+                <group colspan="4" col="3">
+                    <separator string="Insurance"/>
+                    <separator string="Policyholder"/>
+                    <separator string="Insurance broker"/>
+                    <field name="product_id" nolabel="1" attrs="{'readonly':[('cancellation_date','!=',False)]}" />
+                    <field name="customer_id" nolabel="1" attrs="{'readonly':[('cancellation_date','!=',False)]}" />
+                    <field name="supplier_id" nolabel="1" attrs="{'readonly':[('cancellation_date','!=',False)]}" />
+                </group>
+                <newline/>
+                <newline/>
+                <group colspan="2" col="2">
+                    <separator string="Data coveration and expiration" colspan="2" />
+                    <group colspan="2" col="4">
+                        <field name="effective_date" attrs="{'readonly':[('cancellation_date','!=',False)]}" />
+                        <field name="effective_time" widget="float_time" attrs="{'readonly':[('cancellation_date','!=',False)]}" />
+                    </group>
+                    <field name="type_expiration" attrs="{'readonly':[('cancellation_date','!=',False)]}" />
+                    <field name="is_renewal_editable" invisible="1" />
+                </group>
+                <group colspan="2" col="2">
+                    <separator string="Cancellation" colspan="2" />
+                    <field name="cancellation_date" string="Date" />
+                    <field name="cancellation_reason_id" attrs="{'readonly':['|',('id','=',False),('cancellation_date','!=',False)],}" string="Reason" />
+                </group>
+                <notebook colspan="4">
+                    <page string="Renewals">
+                        <field name="renewal_ids" colspan="4" nolabel="1" 
+                            attrs="{'readonly':['|',('id','=',False),('is_renewal_editable','=',False)]}">
+                            <tree>
+                                <field name="effective_date"/>
+                                <field name="expiration_date"/>
+                                <field name="price"/>
+                                <field name="paid"/>
+                            </tree>
+                            <form string="Renewal" >
+                                <field name="effective_date"/>
+                                <field name="expiration_date"/>
+                                <field name="price"/>
+                                <field name="paid"/>
+                                <field name="text" colspan="4"/>
+                            </form>
+                        </field>
+                    </page>
+                    <page string="Claims">
+                        <field name="claim_ids" colspan="4" nolabel="1" attrs="{'readonly':['|',('id','=',False),('cancellation_date','!=',False)]}">
+                            <tree>
+                                <field name="claim_date"/>
+                                <field name="claim_time" widget="float_time"/>
+                                <field name="police_report"/>
+                                <field name="amount_lost" />
+                                <field name="amount_paid" />
+                            </tree>
+                            <form string="Claim" >
+                                <field name="claim_date"/>
+                                <field name="claim_time" widget="float_time"/>
+                                <field name="text" colspan="4"/>
+                                <group colspan="4" col="6">
+                                    <field name="police_report"/>
+                                    <field name="amount_lost"/>
+                                    <field name="amount_paid"/>
+                                </group>
+                                <field name="photo_ids" colspan="4">
+                                    <tree>
+                                        <field name="description"/>
+                                        <field name="photo"/>
+                                    </tree>
+                                    <form string="Photo">
+                                        <group colspan="2" col="2">
+                                            <separator string="Description" colspan="2"/>
+                                            <field name="description" nolabel="1"/>
+                                        </group>
+                                        <group colspan="2" col="2">
+                                            <separator string="Photo" colspan="2"/>
+                                            <field name="photo" widget="image" nolabel="1"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_insurance_policy">
+        <field name="name">Policies</field>
+        <field name="res_model">insurance.policy</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Policies" id="menu_insurance_policy" action="action_insurance_policy" parent="menu_insurance"/>
+
+    <!-- Vistes tree, form i search per als accidents -->
+    <record model="ir.ui.view" id="view_insurance_policy_claim_form" >
+        <field name="name">insurance.policy.claim.form</field>
+        <field name="model">insurance.policy.claim</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Claim" >
+                <field name="policy_id"/>
+                <!-- Com que no posem widget="selection" en el camp anterior, és imprescindible disposar del 
+                     camp "name" en insurance.policy, ja que del contrari es produeix un error en intentar escriure
+                     i cercar per aquest camp. Per tant, sembla lògic tenir SEMPRE el camp "name" o en el seu defecte,
+                     el camp _rec_name fent referència a un camp "string" -->
+                <newline/>
+                <separator colspan="4"/>
+                <field name="claim_date"/>
+                <field name="claim_time" widget="float_time"/>
+                <field name="text" colspan="4"/>
+                <group colspan="4" col="6">
+                    <field name="police_report"/>
+                    <field name="amount_lost"/>
+                    <field name="amount_paid"/>
+                </group>
+                <field name="photo_ids" colspan="4">
+                    <tree>
+                        <field name="description"/>
+                        <field name="photo"/>
+                    </tree>
+                    <form string="Photo">
+                        <group colspan="2" col="2">
+                            <separator string="Description" colspan="2"/>
+                            <field name="description" nolabel="1"/>
+                        </group>
+                        <group colspan="2" col="2">
+                            <separator string="Photo" colspan="2"/>
+                            <field name="photo" widget="image" nolabel="1"/>
+                        </group>
+                    </form>
+                </field>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_insurance_policy_claim_tree">
+        <field name="name">insurance.policy.claim.tree</field>
+        <field name="model">insurance.policy.claim</field>
+        <field name="type">tree</field>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <tree string="Claims">
+                <field name="policy_id" />
+                <field name="product_id" />
+                <field name="customer_id" />
+                <field name="claim_date" />
+                <field name="claim_time" widget="float_time"/>
+                <field name="police_report"/>
+                <field name="amount_lost" />
+                <field name="amount_paid" />
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_insurance_policy_claim_search">
+        <field name="name">insurance.policy.claim.search</field>
+        <field name="model">insurance.policy.claim</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+        <search>
+          <group>
+            <field name="customer_id" widget="selection"/>
+          </group>
+          <newline/>
+          <group expand="1" string="Group By...">
+            <filter string="Policy" name="policy" domain="[]" context="{'group_by':'policy_id'}" />
+          </group>
+          <!-- L'enunciat demanava posar un filtre que mostrés les pòlisses del client indicat en el primer camp de filtre.
+               Això, en aquesta versió d'OpenERP no és factible... No podem posar dominis dinàmics... I en les vistes "search"
+               tampoc funciona el mètode on_change... Si funcionés, podríem invocar un mètode que definís el domini de valors
+               per al camp "policy_id", de manera que el desplegable de pòlisses només mostrés les pòlisses del client...
+               La solució alternativa és posar el camp policy_id com a camp d'agrupament i llavors tots els sinistres d'una
+               mateixa pòlissa queden agrupats i és fàcil seleccionar una pòlissa. I per aconseguir que el botó corresponent
+               a l'agrupació estigui activat, cal utilitzar "context" en l'acció que utilitza la vista.-->
+        </search>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="view_insurance_policy_claim_calendar">
+      <field name="name">insurance.policy.claim.calendar</field>
+      <field name="model">insurance.policy.claim</field>
+      <field name="type">calendar</field>
+      <field name="arch" type="xml">
+        <calendar color='product_id' date_start='claim_date'>
+          <field name="claim_time" widget="float_time"/>
+          <!-- La vista calendar no fa cas del widget i si l'hora és les 20:45, mostra 20,75 (hora centessimal) -->
+          <!-- A més, el client web inicia cada registre amb el valor 11:00. És un error del client web -->
+          <field name="policy_id"/>
+          <field name="customer_id"/>
+        </calendar>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_insurance_policy_claim">
+        <field name="name">Claims</field>
+        <field name="res_model">insurance.policy.claim</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="context">{"search_default_policy":1}</field>
+    </record>
+    <menuitem name="Claims" id="menu_insurance_policy_claim" action="action_insurance_policy_claim" parent="menu_insurance"/>
+  </data>
+</openerp>

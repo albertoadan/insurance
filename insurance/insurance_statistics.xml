@@ -1,0 +1,97 @@
+﻿<?xml version="1.0"?>
+<openerp>
+  <data>
+    <menuitem name="Dashboards" id="menu_insurance_dashboards" parent="menu_insurance" sequence="98"/>
+    <!-- Vistes "tree", "form" i "graph" per l'objecte insurance.statistics -->
+    <record model="ir.ui.view" id="view_insurance_statistics_tree">
+        <field name="name">insurance.statistics.tree</field>
+        <field name="model">insurance.statistics</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Insurance statistics">
+                <field name="name"/>
+                <field name="policy_nbr"/>
+                <field name="claim_nbr"/>
+                <field name="ratio" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_insurance_statistics_form">
+        <field name="name">insurance.statistics.form</field>
+        <field name="model">insurance.statistics</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Insurance statistics">
+                <group colspan="2" col="2">
+                    <field name="name"/>
+                    <field name="policy_nbr"/>
+                    <field name="claim_nbr"/>
+                    <field name="ratio" widget="progressbar"/>
+                </group>
+                <group colspan="2" col="2"/>
+            </form>
+        </field>
+    </record>
+    <!-- Evidentment, aquestes vistes tree i form no han de ser editables, ja que es basen en una 
+         vista i la informació no és actualitzable. Els botons "create", "edit", "delete" en OpenERP 6.1 no
+         es poden amagar... OpenERP 7.x incorpora aquesta possibilitat... Per tant, en el nostre cas, els botons
+         es veuran... Si l'usuari intenta crear/modificar/eliminar, OpenERP li mostrarà l'error... -->
+    <!-- Es dissenya la vista "form" per què des de la vista "tree" es pot demanar de veure la vista "form" i,
+         si no es dissenya, OpenERP en genera una per defecte, que pot no agradar -->
+    <record model="ir.ui.view" id="view_insurance_statistics_graph">
+        <field name="name">insurance.statistics.graph</field>
+        <field name="model">insurance.statistics</field>
+        <field name="type">graph</field>
+        <field name="arch" type="xml">
+            <graph string="Insurance statistics" type="bar">
+                <field name="name"/>
+                <field name="policy_nbr"/>
+                <field name="claim_nbr"/>
+            </graph>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_insurance_statistics_tree">
+        <field name="name">Insurance statistics</field>
+        <field name="res_model">insurance.statistics</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_insurance_statistics_graph">
+        <field name="name">Insurance statistics</field>
+        <field name="res_model">insurance.statistics</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph</field>
+    </record>
+    <!-- Dashboard amb gràfica de nombre de pòlisses per assegurança i nombre de sinistres per assegurança-->
+    <record model="ir.ui.view" id="board_insurance">
+      <field name="name">board.insurance</field>
+      <field name="model">board.board</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Insurance statistics">
+          <board style="1-1">
+            <column>
+              <action string="Statistics on insurance"
+                  name="%(insurance.action_insurance_statistics_tree)d"
+                  view_mode="tree"/>
+            </column>
+            <column>
+              <action string="Graph"
+                  name="%(insurance.action_insurance_statistics_graph)d"
+                  view_mode="graph"/>
+            </column>
+          </board>
+        </form>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_board_insurance">
+      <field name="name">Insurance Dashboard</field>
+      <field name="res_model">board.board</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="usage">menu</field>
+      <field name="view_id" ref="board_insurance"/>
+    </record>
+    <menuitem name="Insurance Dashboard" id="menu_board_insurance" action="action_board_insurance" parent="menu_insurance_dashboards"/>
+  </data>
+</openerp>
