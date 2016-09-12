@@ -1,0 +1,9 @@
+Les dades demo incorporen la crida d'una funció del model insurance.policy.renewal,
+que aquest model no tenia i que sembla que només és necessària per les dades demo.
+S'hagués pogut afegir al model insurance.policy.renewal definit dins insurance.py,
+però com que només és per a les dades "demo", s'ha decidit afegir aquesta funció
+en una extensió del model insurance.policy.renewal via herència dins insurance_demo.py
+
+Això obliga a que:
+- Dins la carpeta "demo" hi hagi un fitxer __init__.py
+- El fitxer __init__.py del mòdul "insurance" incorpori l'import de la carpeta "demo".

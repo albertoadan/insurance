@@ -1,0 +1,793 @@
+﻿# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* insurance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20140210-004940\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-21 11:36+0000\n"
+"PO-Revision-Date: 2014-04-21 15:37+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.5\n"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.RML:0
+msgid "Cancellation:"
+msgstr "Cancel·lació:"
+
+#. module: insurance
+#: view:insurance.policy:0
+msgid "Renewal"
+msgstr "Renovació"
+
+#. module: insurance
+#: selection:insurance.policy,type_expiration:0
+msgid "Monthly"
+msgstr "Mensual"
+
+#. module: insurance
+#: field:insurance.generate.renewals,info_count:0
+msgid "Number of renewals"
+msgstr "Nombre de renovacions"
+
+#. module: insurance
+#: view:insurance.policy:0 view:insurance.policy.claim:0
+msgid "Group By..."
+msgstr "Agrupat per..."
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Renewals-renewal_ids/Paid-paid"
+msgstr "/data/record/Renewals-renewal_ids/Paid-paid"
+
+#. module: insurance
+#: field:insurance.policy,last_price:0
+msgid "Last price"
+msgstr "Darrer preu"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Renewals-renewal_ids/Effective_date-effective_date"
+msgstr "/data/record/Renewals-renewal_ids/Effective_date-effective_date"
+
+#. module: insurance
+#: view:insurance.count.claims:0 view:insurance.generate.renewals:0
+#: view:insurance.reactivate.policy:0
+msgid "Assign"
+msgstr "Assigneu"
+
+#. module: insurance
+#: model:ir.model,name:insurance.model_insurance_policy
+msgid "insurance.policy"
+msgstr "insurance.policy"
+
+#. module: insurance
+#: view:insurance.policy:0
+msgid "Reason"
+msgstr "Motiu"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{PolicyId}"
+msgstr "$F{PolicyId}"
+
+#. module: insurance
+#: constraint:insurance.generate.renewals:0
+msgid "Error! The percentage can not be zero"
+msgstr "Error! El percentatge no pot ser zero"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Renewals-renewal_ids/Expiration_date-expiration_date"
+msgstr "/data/record/Renewals-renewal_ids/Expiration_date-expiration_date"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{InsuranceBrokerReference}"
+msgstr "$F{InsuranceBrokerReference}"
+
+#. module: insurance
+#: selection:insurance.policy,type_expiration:0
+msgid "Annual"
+msgstr "Anual"
+
+#. module: insurance
+#: field:insurance.policy,is_renewal_editable:0
+msgid "Is renewal editable"
+msgstr "La renovació és editable"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{RenewalEffectiveDate}"
+msgstr "$F{RenewalEffectiveDate}"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "Effective Date"
+msgstr "Data efectiva"
+
+#. module: insurance
+#: field:insurance.count.claims,date_init:0
+#: field:insurance.generate.renewals,date_init:0
+msgid "Date init"
+msgstr "Data inicial"
+
+#. module: insurance
+#: constraint:insurance.generate.renewals:0
+msgid "Error! The decrease can not be less than -100"
+msgstr "Error! El decrement no pot ser menor que -100"
+
+#. module: insurance
+#: model:ir.actions.report.xml,name:insurance.policies_with_renewals_Jasper
+msgid "Policies with renewals (Jasper)"
+msgstr "Pòlisses amb renovacions (Jasper)"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Policyholder-customer_id/Nom-name"
+msgstr "/data/record/Policyholder-customer_id/Nom-name"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 report:PoliciesWithRenewals.RML:0
+#: view:insurance.policy:0 field:insurance.policy,renewal_ids:0
+msgid "Renewals"
+msgstr "Renovacions"
+
+#. module: insurance
+#: model:res.groups,name:insurance.group_insurance_claimuser
+msgid "ClaimUser"
+msgstr "SinistreUsuari"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid ""
+"$F{EffectiveHour}.equals(\"\")? \"00.00\" : $F{EffectiveHour}.substring(0,$F"
+"{EffectiveHour}.lastIndexOf('.'))+$F{EffectiveHour}.substring($F"
+"{EffectiveHour}.lastIndexOf('.'),$F{EffectiveHour}.lastIndexOf('.')+3)"
+msgstr ""
+"$F{EffectiveHour}.equals(\"\")? \"00.00\" : $F{EffectiveHour}.substring(0,$F"
+"{EffectiveHour}.lastIndexOf('.'))+$F{EffectiveHour}.substring($F"
+"{EffectiveHour}.lastIndexOf('.'),$F{EffectiveHour}.lastIndexOf('.')+3)"
+
+#. module: insurance
+#: view:insurance.policy:0
+msgid "Data coveration and expiration"
+msgstr "Dades de cobertura i venciment"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid ""
+"$F{ExpirationType}.equals(\"annual\")? \"Annual\" : $F{ExpirationType}.equals"
+"(\"biannual\") ? \"Biannual\": $F{ExpirationType}.equals(\"quarterly\") ? "
+"\"Quarterly\" : \"Monthly\""
+msgstr ""
+"$F{ExpirationType}.equals(\"annual\")? \"Anual\" : $F{ExpirationType}.equals"
+"(\"bianual\") ? \"Semestrall\": $F{ExpirationType}.equals(\"quarterly\") ? "
+"\"Trimestral\" : \"Mensual\""
+
+#. module: insurance
+#: model:product.template,name:insurance.product_product_insurance_Ass1_product_template
+msgid "Assegurança Llar Bàsica"
+msgstr "Assegurança Llar Bàsica"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Policyholder-customer_id/Referencia-ref"
+msgstr "/data/record/Policyholder-customer_id/Referencia-ref"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/id"
+msgstr "/data/record/id"
+
+#. module: insurance
+#: field:insurance.policy.claim,amount_lost:0
+msgid "Amount lost"
+msgstr "Import sinistre"
+
+#. module: insurance
+#: model:ir.model,name:insurance.model_insurance_policy_claim_photo
+msgid "insurance.policy.claim.photo"
+msgstr "insurance.policy.claim.photo"
+
+#. module: insurance
+#: field:insurance.count.claims,state:0
+#: field:insurance.generate.renewals,state:0
+#: field:insurance.reactivate.policy,state:0
+msgid "State"
+msgstr "Estat"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 view:insurance.policy:0
+msgid "Policy Id."
+msgstr "Id. Pòlissa"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Insurance_broker-supplier_id/Nom-name"
+msgstr "/data/record/Insurance_broker-supplier_id/Nom-name"
+
+#. module: insurance
+#: view:board.board:0 model:ir.model,name:insurance.model_insurance_statistics
+msgid "Statistics on insurance"
+msgstr "Estadístiques sobre assegurança"
+
+#. module: insurance
+#: field:insurance.generate.renewals,percentage:0
+msgid "Percentage increase"
+msgstr "Percentatge d'increment"
+
+#. module: insurance
+#: field:insurance.policy.claim,claim_date:0
+msgid "Claim date"
+msgstr "Data de sinistre"
+
+#. module: insurance
+#: view:insurance.generate.renewals:0
+msgid "Interval expiration date..."
+msgstr "Interval de dates de venciment..."
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "new java.util.Date()"
+msgstr "new java.util.Date()"
+
+#. module: insurance
+#: code:addons\insurance\insurance.py:196
+#, python-format
+msgid "Invalid action !"
+msgstr "Acció invàlida!"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{Insurance}"
+msgstr "$F{Insurance}"
+
+#. module: insurance
+#: model:ir.ui.menu,name:insurance.menu_insurance_configuration
+msgid "Configuration"
+msgstr "Configuració"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "Expiration Date"
+msgstr "Data de venciment"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 report:PoliciesWithRenewals.RML:0
+msgid "Hour"
+msgstr "Hora"
+
+#. module: insurance
+#: view:board.board:0 view:insurance.statistics:0
+#: model:ir.actions.act_window,name:insurance.action_insurance_statistics_graph
+#: model:ir.actions.act_window,name:insurance.action_insurance_statistics_tree
+msgid "Insurance statistics"
+msgstr "Estadístiques d'assegurances"
+
+#. module: insurance
+#: view:insurance.reactivate.policy:0
+#: model:ir.actions.act_window,name:insurance.action_insurance_reactivate_policy
+#: model:ir.ui.menu,name:insurance.menu_insurance_reactivate_policy
+msgid "To reactivate policy"
+msgstr "Reactivació de pòlissa"
+
+#. module: insurance
+#: model:ir.model,name:insurance.model_insurance_policy_renewal
+msgid "insurance.policy.renewal"
+msgstr "insurance.policy.renewal"
+
+#. module: insurance
+#: view:insurance.policy:0
+#: model:ir.actions.act_window,name:insurance.action_insurance_policy
+#: model:ir.ui.menu,name:insurance.menu_insurance_policy
+msgid "Policies"
+msgstr "Pòlisses"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "\"Page \"+$V{PAGE_NUMBER}+\" of\""
+msgstr "\"Pàgina \"+$V{PAGE_NUMBER}+\" de\""
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Type_of_expiration-type_expiration"
+msgstr "/data/record/Type_of_expiration-type_expiration"
+
+#. module: insurance
+#: field:insurance.policy.claim,claim_time:0
+msgid "Claim time"
+msgstr "Hora de sinistre"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{PolicyHolderReference}"
+msgstr "$F{PolicyHolderReference}"
+
+#. module: insurance
+#: view:insurance.policy:0 view:insurance.policy.claim:0
+#: field:insurance.policy.claim.photo,photo:0
+msgid "Photo"
+msgstr "Foto"
+
+#. module: insurance
+#: view:insurance.count.claims:0
+#: model:ir.actions.act_window,name:insurance.action_insurance_count_claims
+#: model:ir.ui.menu,name:insurance.menu_insurance_count_claims
+msgid "To count claims"
+msgstr "Comptatge de sinistres"
+
+#. module: insurance
+#: constraint:insurance.policy.claim:0
+msgid "Error! The claim date must be before date expiration"
+msgstr "Error! La data de sinistre ha de ser anterior a la data de venciment"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid ""
+"/data/record/Reason_for_cancellation-cancellation_reason_id/"
+"Reason_for_cancellation-name"
+msgstr ""
+"/data/record/Reason_for_cancellation-cancellation_reason_id/"
+"Reason_for_cancellation-name"
+
+#. module: insurance
+#: field:insurance.statistics,claim_nbr:0
+msgid "# of claims"
+msgstr "Nre. de sinistres"
+
+#. module: insurance
+#: model:ir.actions.report.xml,name:insurance.policies_with_renewals_RML
+msgid "Policies with renewals (RML)"
+msgstr "Pòlisses amb renovacions (RML)"
+
+#. module: insurance
+#: constraint:insurance.policy.claim:0
+msgid "Error! The amount paid can not be negative"
+msgstr "Error! L'import abonat no pot ser negatiu"
+
+#. module: insurance
+#: field:insurance.statistics,ratio:0
+msgid "Ratio claims/policies"
+msgstr "Ratio claims/policies"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{PolicyHolderName}"
+msgstr "$F{PolicyHolderName}"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.RML:0
+msgid "Expiration type"
+msgstr "Tipus de venciment"
+
+#. module: insurance
+#: view:board.board:0
+msgid "Graph"
+msgstr "Gràfica"
+
+#. module: insurance
+#: field:insurance.count.claims,info_count:0
+msgid "Number of claims"
+msgstr "Nombre de sinistres"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Renewals-renewal_ids/Price-price"
+msgstr "/data/record/Renewals-renewal_ids/Price-price"
+
+#. module: insurance
+#: field:insurance.policy.claim,police_report:0
+msgid "Police report"
+msgstr "Atestat policial"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 report:PoliciesWithRenewals.RML:0
+#: view:insurance.policy:0 field:insurance.policy,supplier_id:0
+msgid "Insurance broker"
+msgstr "Corredor d'assegurances"
+
+#. module: insurance
+#: selection:insurance.policy,type_expiration:0
+msgid "Quarterly"
+msgstr "Trimestral"
+
+#. module: insurance
+#: model:ir.model,name:insurance.model_insurance_cancellation_reason
+msgid "insurance.cancellation.reason"
+msgstr "insurance.cancellation.reason"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "\" \" + $V{PAGE_NUMBER}"
+msgstr "\" \" + $V{PAGE_NUMBER}"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 report:PoliciesWithRenewals.RML:0
+#: view:insurance.policy:0 field:insurance.policy,customer_id:0
+#: field:insurance.policy.claim,customer_id:0
+msgid "Policyholder"
+msgstr "Prenedor"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.RML:0 field:insurance.policy,expiration_date:0
+#: field:insurance.policy.renewal,expiration_date:0
+msgid "Expiration date"
+msgstr "Data de venciment"
+
+#. module: insurance
+#: help:insurance.generate.renewals,product_id:0
+msgid "If empty, all insurance types"
+msgstr "Si buit, tots els tipus d'assegurances"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.RML:0
+msgid "Policy Id.:"
+msgstr "Id. Pòlissa:"
+
+#. module: insurance
+#: constraint:insurance.count.claims:0
+#: constraint:insurance.generate.renewals:0
+msgid "Error! The end date must be equal or greater than the start date"
+msgstr "Error! La data final ha de ser major o igual que la data inicial"
+
+#. module: insurance
+#: field:insurance.policy,cancellation_date:0
+msgid "Cancelled date"
+msgstr "Data de cancel·lació"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Expiration_date-expiration_date"
+msgstr "/data/record/Expiration_date-expiration_date"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.RML:0
+msgid "."
+msgstr "."
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{InsuranceBrokerName}"
+msgstr "$F{InsuranceBrokerName}"
+
+#. module: insurance
+#: view:insurance.policy:0 field:insurance.policy,active:0
+msgid "Active"
+msgstr "Activa"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Renewals-renewal_ids/Policy-policy_id"
+msgstr "/data/record/Renewals-renewal_ids/Policy-policy_id"
+
+#. module: insurance
+#: code:addons\insurance\insurance.py:196
+#, python-format
+msgid "Is not possible to delete a policy."
+msgstr "No és possible eliminar una pòlissa."
+
+#. module: insurance
+#: constraint:insurance.policy.claim:0
+msgid "Error! The claim date can not be after today"
+msgstr "Error! La data de sinistre no pot ser posterior a avui"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Insurance-product_id/Name-name_template"
+msgstr "/data/record/Insurance-product_id/Name-name_template"
+
+#. module: insurance
+#: field:insurance.count.claims,date_end:0
+#: field:insurance.generate.renewals,date_end:0
+msgid "Date end"
+msgstr "Data final"
+
+#. module: insurance
+#: model:product.template,name:insurance.product_product_insurance_Ass2_product_template
+msgid "Assegurança Cotxe Premium"
+msgstr "Assegurança Cotxe Premium"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{ExpirationDate}"
+msgstr "$F{ExpirationDate}"
+
+#. module: insurance
+#: view:insurance.policy:0
+msgid "Date"
+msgstr "Data"
+
+#. module: insurance
+#: constraint:insurance.policy.claim:0
+msgid "Error! The amount paid can not be greater than amount lost"
+msgstr "Error! L'import pagat no pot ser superior a l'import del sinistre"
+
+#. module: insurance
+#: model:ir.model,name:insurance.model_insurance_count_claims
+msgid "insurance.count.claims"
+msgstr "insurance.count.claims"
+
+#. module: insurance
+#: view:insurance.policy:0 field:insurance.policy,claim_ids:0
+#: view:insurance.policy.claim:0
+#: model:ir.actions.act_window,name:insurance.action_insurance_policy_claim
+#: model:ir.ui.menu,name:insurance.menu_insurance_policy_claim
+msgid "Claims"
+msgstr "Sinistres"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 view:insurance.policy:0
+msgid "Cancellation"
+msgstr "Cancel·lació"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Cancelled_date-cancellation_date"
+msgstr "/data/record/Cancelled_date-cancellation_date"
+
+#. module: insurance
+#: view:insurance.policy:0 view:insurance.policy.claim:0
+#: field:insurance.policy.claim.photo,claim_id:0
+msgid "Claim"
+msgstr "Sinistre"
+
+#. module: insurance
+#: field:insurance.policy,effective_time:0
+msgid "Effective hour"
+msgstr "Hora efectiva"
+
+#. module: insurance
+#: field:insurance.policy.claim,text:0 field:insurance.policy.renewal,text:0
+msgid "Text"
+msgstr "Text"
+
+#. module: insurance
+#: model:ir.ui.menu,name:insurance.menu_insurance_dashboards
+msgid "Dashboards"
+msgstr "Quadres de comandament"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Effective_date-effective_date"
+msgstr "/data/record/Effective_date-effective_date"
+
+#. module: insurance
+#: view:insurance.policy:0
+msgid "Inactive"
+msgstr "Inactiva"
+
+#. module: insurance
+#: selection:insurance.count.claims,state:0
+#: selection:insurance.generate.renewals,state:0
+#: selection:insurance.reactivate.policy,state:0
+msgid "Done"
+msgstr "Fet"
+
+#. module: insurance
+#: view:insurance.count.claims:0 view:insurance.generate.renewals:0
+#: view:insurance.reactivate.policy:0
+msgid "Cancel"
+msgstr "Cancel·leu"
+
+#. module: insurance
+#: view:insurance.count.claims:0 view:insurance.generate.renewals:0
+#: view:insurance.reactivate.policy:0
+msgid "Close"
+msgstr "Tanqueu"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 report:PoliciesWithRenewals.RML:0
+#: field:insurance.generate.renewals,product_id:0 view:insurance.policy:0
+#: field:insurance.policy,product_id:0
+#: field:insurance.policy.claim,product_id:0 field:insurance.statistics,name:0
+#: model:ir.module.category,name:insurance.module_category_insurance
+#: model:ir.ui.menu,name:insurance.menu_insurance
+msgid "Insurance"
+msgstr "Assegurança"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Insurance_broker-supplier_id/Referencia-ref"
+msgstr "/data/record/Insurance_broker-supplier_id/Referencia-ref"
+
+#. module: insurance
+#: field:insurance.reactivate.policy,info:0
+msgid "Information"
+msgstr "Informació"
+
+#. module: insurance
+#: view:insurance.cancellation.reason:0
+#: model:ir.actions.act_window,name:insurance.action_insurance_cancellation_reason
+#: model:ir.ui.menu,name:insurance.menu_insurance_cancellation_reason
+msgid "Cancellation reasons"
+msgstr "Motius de cancel·lació"
+
+#. module: insurance
+#: field:insurance.policy.claim,amount_paid:0
+msgid "Amount paid"
+msgstr "Import abonat"
+
+#. module: insurance
+#: model:ir.actions.act_window,name:insurance.action_board_insurance
+#: model:ir.ui.menu,name:insurance.menu_board_insurance
+msgid "Insurance Dashboard"
+msgstr "Quadre de comandament d'assegurances"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{RenewalExpirationDate}"
+msgstr "$F{RenewalExpirationDate}"
+
+#. module: insurance
+#: selection:insurance.count.claims,state:0
+#: selection:insurance.generate.renewals,state:0
+#: selection:insurance.reactivate.policy,state:0
+msgid "Init"
+msgstr "Inici"
+
+#. module: insurance
+#: model:ir.ui.menu,name:insurance.menu_insurance_configuration_wizards
+msgid "Wizards"
+msgstr "Assistents"
+
+#. module: insurance
+#: field:insurance.policy,type_expiration:0
+msgid "Type of expiration"
+msgstr "Tipus de venciment"
+
+#. module: insurance
+#: view:insurance.policy:0 field:insurance.policy,name:0
+#: view:insurance.policy.claim:0 field:insurance.policy.claim,policy_id:0
+#: field:insurance.policy.renewal,policy_id:0
+#: field:insurance.reactivate.policy,policy_id:0
+msgid "Policy"
+msgstr "Pòlissa"
+
+#. module: insurance
+#: model:ir.model,name:insurance.model_insurance_generate_renewals
+msgid "insurance.generate.renewals"
+msgstr "insurance.generate.renewals"
+
+#. module: insurance
+#: field:insurance.statistics,policy_nbr:0
+msgid "# of policies"
+msgstr "Nombre de pòlisses"
+
+#. module: insurance
+#: help:insurance.generate.renewals,percentage:0
+msgid "Positive=>Increment / Negative=>Decrement"
+msgstr "Positiu=>Increment / Negatiu=>Decrement"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 report:PoliciesWithRenewals.RML:0
+#: field:insurance.policy.renewal,price:0
+msgid "Price"
+msgstr "Preu"
+
+#. module: insurance
+#: model:ir.model,name:insurance.model_insurance_policy_claim
+msgid "insurance.policy.claim"
+msgstr "insurance.policy.claim"
+
+#. module: insurance
+#: sql_constraint:insurance.cancellation.reason:0
+msgid "The name must be unique!"
+msgstr "El nom ha de ser únic!"
+
+#. module: insurance
+#: field:insurance.policy.claim,photo_ids:0
+msgid "Photos"
+msgstr "Fotos"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "/data/record/Effective_hour-effective_time"
+msgstr "/data/record/Effective_hour-effective_time"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "Ref."
+msgstr "Ref."
+
+#. module: insurance
+#: report:PoliciesWithRenewals.RML:0
+msgid "Policy with renewals"
+msgstr "Pòlissa amb renovacions"
+
+#. module: insurance
+#: model:ir.model,name:insurance.model_insurance_reactivate_policy
+msgid "insurance.reactivate.policy"
+msgstr "insurance.reactivate.policy"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0 report:PoliciesWithRenewals.RML:0
+#: field:insurance.policy.renewal,paid:0
+msgid "Paid?"
+msgstr "Pagat?"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "Policy with renevals"
+msgstr "Pòlissa amb renovacions"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.RML:0 field:insurance.policy,effective_date:0
+#: field:insurance.policy.renewal,effective_date:0
+msgid "Effective date"
+msgstr "Data efectiva"
+
+#. module: insurance
+#: constraint:insurance.policy.claim:0
+msgid "Error! The amount lost can not be negative"
+msgstr "Error! L'import del sinistre no pot ser negatiu"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{EffectiveFirstDate}"
+msgstr "$F{EffectiveFirstDate}"
+
+#. module: insurance
+#: view:insurance.policy:0 view:insurance.policy.claim:0
+#: field:insurance.policy.claim.photo,description:0
+msgid "Description"
+msgstr "Descripció"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{RenewalPaid}==null || $F{RenewalPaid}==false ? \"No\" : \"Yes\""
+msgstr "$F{RenewalPaid}==null || $F{RenewalPaid}==false ? \"No\" : \"Sí\""
+
+#. module: insurance
+#: report:PoliciesWithRenewals.RML:0
+msgid "Ref.:"
+msgstr "Ref.:"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{CancellationDate}"
+msgstr "$F{CancellationDate}"
+
+#. module: insurance
+#: selection:insurance.policy,type_expiration:0
+msgid "Biannual"
+msgstr "Semestral"
+
+#. module: insurance
+#: field:insurance.cancellation.reason,name:0
+#: field:insurance.policy,cancellation_reason_id:0
+msgid "Reason for cancellation"
+msgstr "Motiu de cancel·lació"
+
+#. module: insurance
+#: model:res.groups,name:insurance.group_insurance_manager
+msgid "Manager"
+msgstr "Director"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{CancellationReason}"
+msgstr "$F{CancellationReason}"
+
+#. module: insurance
+#: view:insurance.generate.renewals:0
+#: model:ir.actions.act_window,name:insurance.action_insurance_generate_renewals
+#: model:ir.ui.menu,name:insurance.menu_insurance_generate_renewals
+msgid "To generate renewals"
+msgstr "Generació de renovacions"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "Expiration Type"
+msgstr "Tipus de venciment"
+
+#. module: insurance
+#: report:PoliciesWithRenewals.Jasper:0
+msgid "$F{RenewalPrice}"
+msgstr "$F{RenewalPrice}"
